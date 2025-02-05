@@ -1,0 +1,14 @@
+# Use public servers from the pool.ntp.org project.
+server 0.fedora.pool.ntp.org iburst
+server 1.fedora.pool.ntp.org iburst
+server 2.fedora.pool.ntp.org iburst
+
+# Allow NTP client access from local network.
+allow {{ local_subnet }} mask {{ subnet_mask }}
+
+# Drift file.
+driftfile /var/lib/chrony/drift
+
+# Log file.
+log tracking on;
+logdir /var/log/chrony;

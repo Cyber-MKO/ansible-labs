@@ -1,0 +1,7 @@
+- hosts: all
+  become: yes
+  vars:
+    local_subnet: "192.168.190.0"
+    subnet_mask: "255.255.255.0"
+  roles:
+    - ntp

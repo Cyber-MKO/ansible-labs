@@ -1,0 +1,8 @@
+- name: Ensure iptables rules directory exists
+  file:
+    path: /etc/iptables
+    state: directory
+
+- name: Save iptables rules
+  shell: iptables-save > /root/dsl.fw
+

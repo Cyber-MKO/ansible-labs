@@ -1,0 +1,30 @@
+- name: Install Docker (Debian/Ubuntu)
+  package:
+    name: "{{ docker_packages.Debian }}"
+    state: present
+  when: ansible_os_family == 'Debian'
+
+- name: Install Docker and dependencies (Fedora)
+  package:
+    name: "{{ item }}"
+    state: present
+  loop:
+    - docker
+    - container-selinux
+  when: ansible_os_family == 'RedHat'
+
+- name: Start and enable Docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Install zsh
+  package:
+    name: zsh
+    state: present
+
+- name: Set default shell for user
+  user:
+    name: "{{ ansible_user }}"
+    shell: "{{ default_shell }}"

@@ -1,0 +1,6 @@
+# Variables for Docker and shell setup
+docker_packages:
+  RedHat: docker
+  Debian: docker.io
+
+default_shell: /bin/zsh
